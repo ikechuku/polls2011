@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Polls 2011</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.js' %}">
+</head>
+<body>
+
+<select id="polresult">
+{% for pu in polling %}
+<option value="{{pu.uniqueid}}">{{pu.polling_unit_name}}</option>
+{% endfor %}
+</select>
+<div id="result">
+	{% for re in result %}
+<p>{{re.party_abbreviation}} - {{re.party_score}}</p>
+{% endfor %}
+</div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript">
+	$('#polresult').change(function(){
+		var url="{% url 'puget' %}";
+		var value=$('#polresult').val();
+		$.ajax({
+			url:url,
+			// method:GET,
+			data:{
+				'value':value
+			},
+			success: function(data){
+				$('#result').html(data)
+			}
+		});
+	});
+</script>
+</body>
+</html>
+
