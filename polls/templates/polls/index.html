@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,13 +8,14 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
 
     <title>Polls 2011</title>
   </head>
   <body>
 
     <!-- NavBar -->
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark " id="dark">
   <a class="navbar-brand" href="#">
     <img src="https://www.flagsonline.it/uploads/2016-6-6/420-272/nigeria.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
       Polls 2011
@@ -21,13 +23,54 @@
 </nav>
 
 
-    <div class="container main">
+    <div class="container-main">
       <div class="container text-center header">
-        <h1>2011 Election Results</h1>
-        <div class="row">
-          <div class="col-5">
+        <h1>Election Results</h1>
+        <div class="row text-center">
 
-          </div>
+
+          <!-- card 1 -->
+
+          <div class="card text-center">
+      <div class="card-header">
+        Question 1
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">View Results by LGA polling unit</h5>
+        <!-- <p class="card-text">View Results by LGA polling units</p> -->
+        <a href="{% url 'puresult' %}" class="btn btn-success ">Go </a>
+      </div>
+    </div>
+<br>
+    <!-- card 2 -->
+
+    <div class="card text-center">
+      <div class="card-header">
+        Question 2
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">View summed Results of each Polling unit</h5>
+        <!-- <p class="card-text"></p> -->
+        <a href="#" class="btn btn-success ">Go </a>
+      </div>
+    </div>
+<br>
+
+    <!-- card 3 -->
+    <div class="card text-center">
+  <div class="card-header">
+  Question 3
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Create Polling Unit Result</h5>
+    <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+    <a href="#" class="btn btn-success ">Go </a>
+  </div>
+</div>
+<br>
+
+
+
         </div>
       </div>
     </div>

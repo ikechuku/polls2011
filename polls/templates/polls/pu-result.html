@@ -1,24 +1,48 @@
-{% load staticfiles %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Polls 2011</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.js' %}">
-</head>
-<body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
 
-<select id="polresult">
-{% for pu in polling %}
-<option value="{{pu.uniqueid}}">{{pu.polling_unit_name}}</option>
-{% endfor %}
-</select>
+	<!-- NavBar -->
+<nav class="navbar navbar-dark " id="dark">
+<a class="navbar-brand" href="#">
+	<img src="https://www.flagsonline.it/uploads/2016-6-6/420-272/nigeria.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+		Polls 2011
+</a>
+</nav>
+
+<div class="container-main">
+<h2>LGA</h2>
+		<div class="card">
+				<select id="polresult">
+					<option value="">--Select an LGA to view the result below--</option>
+						{% for pu in polling %}
+						<option value="{{pu.uniqueid}}">{{pu.polling_unit_name}}</option>
+						{% endfor %}
+				</select>
+		</div>
+<br>	<br>
+		<h2>Results</h2>
+
+
+
 <div id="result">
-	{% for re in result %}
-<p>{{re.party_abbreviation}} - {{re.party_score}}</p>
-{% endfor %}
 </div>
-<script src="{% static 'js/jquery.min.js' %}"></script>
+
+
+</div>
+
+
+<script src="{% static 'js/jquery.min.js' %}" charset="utf-8"></script>
+<script src="{% static 'js/bootstrap.min.js' %}" charset="utf-8"></script>
+
 <script type="text/javascript">
 	$('#polresult').change(function(){
 		var url="{% url 'puget' %}";
@@ -37,4 +61,3 @@
 </script>
 </body>
 </html>
-

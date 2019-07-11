@@ -5,7 +5,7 @@ from django.views.generic import TemplateView
 from . import forms as myform
 # Create your views here.
 def home(request):
-	return HttpResponse("worked")
+	return render(request,'polls/index.html')
 
 #get selected polling unit
 def puGet(request):
